@@ -3,6 +3,7 @@ package org.comit.project.dao;
 import java.util.List;
 
 import org.comit.project.bean.Employee;
+import org.comit.project.bean.timesheet;
 import org.comit.project.dao.mapper.EmployeeMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -48,7 +49,7 @@ public class EmployeeDao {
         jdbcTemplate.update(sql,new Object[] {emp.getUsername(), emp.getPassword(), emp.getFirstName(),
         		                              emp.getLastName(), emp.getBirth(), emp.getStatus()});
 	}
-
+	
     public void modifyEmployee(Employee emp) {
 
         String sql = "UPDATE Employee SET USERNAME = ?, FIRSTNAME = ?, LASTNAME = ?, BIRTH = ? " +
@@ -64,6 +65,11 @@ public class EmployeeDao {
 
         jdbcTemplate.update(sql,new Object[] {idEmp});
     }
+
+	public void timesheetEmployee(timesheet emp) {
+		// TODO Auto-generated method stub
+		
+	}
 
 
 

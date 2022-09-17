@@ -1,4 +1,4 @@
-package org.comit.project.security;
+/*package org.comit.project.security;
 import org.comit.project.bean.Employee;
 import org.comit.project.dao.EmployeeDao;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -6,28 +6,29 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+@Service("EmployeeDetailsService")
 
-public class EmployeeDetailService implements EmployeeDetailsService{{
+public class EmployeeDetailService implements EmployeeDetailsService{
 	
-	@Service("UserDetailsService")
+	
 	
 
 		@Autowired
-		EmployeeDao userDao;
+		EmployeeDao empDao;
 
 		@Override
-		public EmployeeDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+		public EmployeeDetail loadEmployeeByUsername(String username) throws UsernameNotFoundException {
 
 
-			User user = userDao.findByUsername(username);
+			Employee emp = empDao.findByUsername(username);
 
-			if (user==null) {
+			if (emp==null) {
 				throw new UsernameNotFoundException("User not found: " + username);
 			}
 
-			return new CustomUserDetails(user);
+			return new EmployeeDetail(emp);
 		}
 
 	}
 
-}
+}*/

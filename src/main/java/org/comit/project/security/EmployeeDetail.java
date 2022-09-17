@@ -4,7 +4,7 @@ import java.util.Collection;
 import org.comit.project.bean.Employee;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-public class EmployeeDetail implements EmployeeDetails{{
+public class EmployeeDetail implements EmpDetails{{
 	
 
 	
@@ -13,7 +13,8 @@ public class EmployeeDetail implements EmployeeDetails{{
 
 		Employee emp;
 
-		public EmployeeDetails(Employee emp) {
+
+		public Employee(Employee emp) {
 			super();
 			this.emp = emp;
 		}

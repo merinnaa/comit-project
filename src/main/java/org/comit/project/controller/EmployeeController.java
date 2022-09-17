@@ -1,11 +1,14 @@
 package org.comit.project.controller;
 
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
 import org.comit.project.bean.Employee;
+import org.comit.project.bean.timesheet;
 import org.comit.project.service.EmployeeService;
 import org.comit.project.util.Util;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +16,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -29,12 +33,19 @@ public class EmployeeController {
 	}
 
 	@GetMapping("/list")
-	public ModelAndView listEmployees() {
+	@ResponseBody
+	public List<Employee> listEmployees() {
 		System.out.println("List employee");
 
 		List<Employee> em = this.empService.listEmployee();
-
-		return new ModelAndView("list","Employee", em);
+		List<Employee> listemployee=new ArrayList <>();
+		Employee emp1 = new Employee();
+		emp1.setFirstName("lwam");
+		listemployee.add(emp1);
+		
+		//List<Employee> em = listemployee;
+		//return new ModelAndView("list","Employee", em);
+		return em;
 	}
 
 	@GetMapping("/create")
@@ -60,7 +71,7 @@ public class EmployeeController {
 
 		return "redirect:/list";
 	}
-
+	
 	@GetMapping("/update/{id}")
 	public ModelAndView showUpdate(@PathVariable("id") int id) {
 

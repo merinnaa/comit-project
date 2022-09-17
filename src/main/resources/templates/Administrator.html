@@ -48,8 +48,8 @@
                     <td th:text="${emp.firstName} + ' ' + ${emp.lastName}"></td>
                     <td th:text="${emp.username}"></td>
                     <td th:text="${#dates.format(emp.birth, 'dd-MM-yyyy')}"></td>
-                    <td><a th:href="@{/update/} + ${emp.idemp}">Update</a></td>
-                    <td><a th:href="@{/delete/} + ${emp.idemp}">Delete</a></td>
+                    <td><a class="nav-link" th:href="@{/update/} + ${emp.idemp}">Update</a></td>
+                    <td><a lass="nav-link" th:href="@{/delete/} + ${emp.idemp}">Delete</a></td>
                 </tr>
 			</tbody>
 		</table>

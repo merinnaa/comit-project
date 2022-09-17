@@ -12,6 +12,7 @@ public class Employee {
 	String password;
 	Date   birth;
 	String status;
+	
 
 	public Employee() {
 
