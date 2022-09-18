@@ -4,11 +4,17 @@
     <meta charset="UTF-8">
     <title>LulTech</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+   <style th:inline="text">
+body{
+    background: url([[@{/img/tech2.png}]])
+                no-repeat center center fixed;
+                background-size: 100%;
+}
+</style>
   </head>
-  <body>
-	<div class="container mt-5">
-		<img th:src="@{/img/comit.png}" alt="ComIT Logo">
-		<nav class="navbar navbar-expand-lg navbar-light mt-3"
+<body>
+	
+	<nav class="navbar navbar-expand-lg navbar-light mt-1"
 			style="background-color: #E9ECEF;">
 			<a class="navbar-brand" href="#">LulTech</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse"
@@ -21,7 +27,7 @@
 					<li class="nav-item"><a class="nav-link" th:href="@{/index}">Home
 							<span class="sr-only">(current)</span>
 					</a></li>
-					<li class="nav-item"><a class="nav-link" th:href="@{/create}">profile</a></li>
+					<li class="nav-item"><a class="nav-link" th:href="@{/employee}">profile</a></li>
 				<li class="nav-item active"><a class="nav-link"
 						th:href="@{/payroll}">payroll</a></li>
 				</ul>
@@ -30,23 +36,34 @@
 				</ul>
 			</div>
 		</nav>
+		</div>
 		<div class="jumbotron bg-light border mt-3 py-4" style="min-height: 450px;">
-  <div class="col-4"class="container mt-5">
-      employee id :
+   	<form class=center>
+  <div class="form-group row">
+    <label for="staticEmail" class="col-sm-2 col-form-label">Employee id</label>
+    <div class="col-sm-10 ">
+      <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="email@example.com">
+      </div>
+    <label for="staticEmail" class="col-sm-2 col-form-label">Date From</label>
+    <div class="col-sm-10">
+      <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="email@example.com">
+      </div>
+    <label for="staticEmail" class="col-sm-2 col-form-label">Date To</label>
+    <div class="col-sm-10">
+      <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="email@example.com">
+      </div>
+    <label for="staticEmail" class="col-sm-2 col-form-label">Total hours</label>
+    <div class="col-sm-10">
+      <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="email@example.com">
+      </div>
+      <label for="staticEmail" class="col-sm-2 col-form-label">Monthly pay</label>
+    <div class="col-sm-10">
+      <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="email@example.com">
+      </div>
+      <button type="submit" class="btn btn-primary mt-2" style="min-width: 100px">Show monthly payment</button>
     </div>
-    <div class="col-4" class="container mt-5">
-      hours worked :
-   	</div>
-   	<div class="col-4"class="container mt-5">
-      rate :
+    </form>
     </div>
-    <div class="col-4" class="container mt-5">
-      monthly pay :
-   	</div>
-</div><div class="row justify-content-end">
-    
-  </div>
-	</div>
 	<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" Integrity= "sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
 </body>

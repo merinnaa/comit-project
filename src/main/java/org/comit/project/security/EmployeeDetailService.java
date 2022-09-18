@@ -8,7 +8,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 @Service("EmployeeDetailsService")
 
-public class EmployeeDetailService implements EmployeeDetailsService{
+public class EmployeeDetailService implements UserDetailsService{
 	
 	
 	
@@ -17,9 +17,7 @@ public class EmployeeDetailService implements EmployeeDetailsService{
 		EmployeeDao empDao;
 
 		@Override
-		public EmployeeDetail loadEmployeeByUsername(String username) throws UsernameNotFoundException {
-
-
+		public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 			Employee emp = empDao.findByUsername(username);
 
 			if (emp==null) {
@@ -30,5 +28,4 @@ public class EmployeeDetailService implements EmployeeDetailsService{
 		}
 
 	}
-
-}*/
+*/

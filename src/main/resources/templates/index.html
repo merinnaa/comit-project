@@ -6,45 +6,46 @@
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css">
 <link rel="stylesheet" href="css/custom-style.css">
+<style th:inline="text">
+body {
+	background: url([[@{/img/tech1.png}]]) no-repeat center center fixed;
+	background-size: 100%;
+}
+</style>
 </head>
 
 <body>
-
-	<div class="container mt-5">
-		<img th:src="@{img/tech2.png}" alt="LulTech logo">
-
-		<nav class="navbar navbar-expand-lg navbar-light mt-3"
-			style="background-color: gray;">
-			<a class="navbar-brand" href="#">LulTech</a>
-			<button class="navbar-toggler" type="button" data-toggle="collapse"
-				data-target="#navbarNav" aria-controls="navbarNav"
-				aria-expanded="false" aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
-			<div class="collapse navbar-collapse" id="navbarNav">
-				<ul class="navbar-nav">
-					<li class="nav-item active"><a class="nav-link" href="#">Home
-							<span class="sr-only">(current)</span>
-					</a></li>
-					<li class="nav-item"><a class="nav-link"
-						th:href="Employee.html">Employee</a></li>
-					<li class="nav-item"><a class="nav-link"
-						href="Administrator.html">Administrator</a></li>
+	<nav class="navbar navbar-expand-lg navbar-light"
+		style="background-color: gray;">
+		<a class="navbar-brand" href="#">LulTech</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse"
+			data-target="#navbarNav" aria-controls="navbarNav"
+			aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarNav">
+			<ul class="navbar-nav">
+				<li class="nav-item active"><a class="nav-link" th:href="@{/index}">Home
+						<span class="sr-only">(current)</span>
+				</a></li>
+				<li class="nav-item"><a class="nav-link" th:href="@{/employee}">Employee</a></li>
+				<li class="nav-item"><a class="nav-link" th:href="@{/admin}">Administrator</a></li>
 
 
-				</ul>
-			</div>
-
-		</nav>
-		<div class="jumbotron border border-warning mt-3 py-4"
-			style="min-height: 450px;">
-			<h1 class="display-2 text-center" style="margin-top: 90px;">LulTech IT service provider </h1>
-			<hr class="w-75">
-			<p class="text-center text-muted">employee page</p>
-			
+			</ul>
 		</div>
+
+	</nav>
+	<div class="jumbotron border border-warning mt-1 py-1"
+		style="background-image: url([[@{/img/tech1.png}]]);">
+		<h1 class="display-2 text-center" style="margin-top: 50px;">LulTech
+			IT service provider</h1>
+		<hr class="w-75">
+		<p class="text-center text-muted">employee page</p>
+
 	</div>
-	
+	<!-- 	</div> -->
+
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
 		integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"

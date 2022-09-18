@@ -1,4 +1,4 @@
-package org.comit.project.config;
+/*package org.comit.project.config;
 
 import org.comit.project.security.password;
 import org.comit.project.security.password;
@@ -10,10 +10,10 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
-@EnableWebSecurity
+//@EnableWebSecurity
 public class WebSecurityConfig {
 
-	@Bean
+	/*@Bean
 	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 		http
 			.authorizeHttpRequests((requests) -> requests
@@ -28,13 +28,27 @@ public class WebSecurityConfig {
 			.csrf().disable();
 
 		return http.build();
+	}*/
+	/*@Bean
+	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+		http
+			.authorizeHttpRequests((requests) -> requests
+			    .antMatchers("/.index", "/.admin","/").permitAll()
+				.anyRequest().authenticated()
+			)
+			.formLogin((form) -> form
+				.loginPage("/login")
+				.permitAll()
+			)
+			.logout((logout) -> logout.permitAll())
+			.csrf().disable();
+		return http.build();
 	}
-
 	@Bean
 	public PasswordEncoder passwordEncoder() {
 		return new password();
 	}
-
+*/
 	/*
 	@Bean
 	public UserDetailsService userDetailsService() {
@@ -47,4 +61,3 @@ public class WebSecurityConfig {
 
 		return new InMemoryUserDetailsManager(user);
 	}*/
-}

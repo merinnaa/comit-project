@@ -22,7 +22,7 @@ public class TimesheetDao {
 
 		return jdbcTemplate.query(sql, new TimesheetMapper());
 	}
-	public void timesheetEmployee1(timesheet times) {
+	public void timesheetEmployee(timesheet times) {
 
         String sql = "INSERT TIMESHEET(DATEFROM,DATETO,DATESUBMITTED,HOURS) " +
                      "VALUES(?,?,?,?)";

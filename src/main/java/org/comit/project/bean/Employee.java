@@ -29,11 +29,11 @@ public class Employee {
 		this.status = status;
 	}
 
-	public int getIdUser() {
+	public int getIdEmp() {
 		return idEmp;
 	}
-	public void setIdUser(int idUser) {
-		this.idEmp = idUser;
+	public void setIdEmp(int idEmp) {
+		this.idEmp = idEmp;
 	}
 	public String getFirstName() {
 		return firstName;
@@ -88,7 +88,7 @@ public class Employee {
 
 	@Override
 	public String toString() {
-		return "User [idUser=" + idEmp + ", firstName=" + firstName + ", lastName=" + lastName + ", username="
+		return "Emp [idEmp=" + idEmp + ", firstName=" + firstName + ", lastName=" + lastName + ", username="
 				+ username + ", password=" + password + ", birth=" + birth + ", status=" + status + "]";
 	}
 }

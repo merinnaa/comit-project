@@ -20,21 +20,21 @@ public class EmployeeDao {
 
 	public List<Employee> listEmployee(){
 
-		String sql = "SELECT * FROM Employee";
+		String sql = "SELECT * FROM EMPLOYEE";
 
 		return jdbcTemplate.query(sql, new EmployeeMapper());
 	}
 
 	public Employee findEmployee(int idEmp) {
 
-		String sql = "SELECT * FROM Employee WHERE ID_USER = ?";
+		String sql = "SELECT * FROM Employee WHERE EMP_ID = ?";
 
 		return jdbcTemplate.queryForObject(sql, new EmployeeMapper(), idEmp);
 	}
 
 	public Employee findByUsername(String username) {
 
-		String sql = "SELECT * FROM Employee WHERE USERNAME = ?";
+		String sql = "SELECT * FROM Employee WHERE USER_NAME = ?";
 
 		List<Employee> em = jdbcTemplate.query(sql, new EmployeeMapper(), username);
 
@@ -43,7 +43,7 @@ public class EmployeeDao {
 
 	public void createEmployee(Employee emp) {
 
-        String sql = "INSERT Employee(USERNAME,PASSWORD,FIRSTNAME,LASTNAME,BIRTH,STATUS) " +
+        String sql = "INSERT Employee(EMP_ID,FIRST_NAME,LAST_NAME,USER_NAME,PASSWORD,BIRTH,STATUS) " +
                      "VALUES(?,?,?,?,?,?)";
 
         jdbcTemplate.update(sql,new Object[] {emp.getUsername(), emp.getPassword(), emp.getFirstName(),
@@ -52,11 +52,11 @@ public class EmployeeDao {
 	
     public void modifyEmployee(Employee emp) {
 
-        String sql = "UPDATE Employee SET USERNAME = ?, FIRSTNAME = ?, LASTNAME = ?, BIRTH = ? " +
+        String sql = "UPDATE Employee SET EMP_ID = ?, FIRST_NAME = ?, LAST_NAME = ?, USER_NAME = ?, BIRTH = ? " +
                      "WHERE emp_id = ?";
 
-        jdbcTemplate.update(sql,new Object[] {emp.getUsername(), emp.getFirstName(),
-                emp.getLastName(), emp.getBirth(), emp.getIdUser()});
+        jdbcTemplate.update(sql,new Object[] {emp.getIdEmp(), emp.getFirstName(), emp.getLastName(), emp.getUsername(), 
+                 emp.getBirth(), emp.getIdEmp()});
     }
 
     public void deleteEmployee(int idEmp) {

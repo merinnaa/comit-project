@@ -15,8 +15,11 @@ Date   datefrom;
 	Date   dateto;
 	Date   datesubmitted;
 	int hours;
-	public timesheet() {
+	public timesheet(int i, Date date, Date date2, Date date3, String string, String string2) {
 
+	}
+	public timesheet() {
+		// TODO Auto-generated constructor stub
 	}
 	public Date getDatefrom() {
 		return datefrom;
@@ -55,10 +58,11 @@ Date   datefrom;
 			return false;
 		return true;
 	}
+}
 
-	@Override
+	/*@Override
 	public String toString() {
 		return "timesheet [idtimesheet=" + idtimesheet + ", datefrom=" + datefrom + ", dateto=" + dateto + ", datesubmitted="
 				+ datesubmitted + ", hours=" + hours + "]";
 	}
-}
+}*/

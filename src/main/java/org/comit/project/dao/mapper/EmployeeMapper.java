@@ -13,7 +13,7 @@ public class EmployeeMapper implements RowMapper<Employee> {
 
 		Employee emp = new Employee();
 
-		emp.setIdUser(rs.getInt("emp_id"));
+		emp.setIdEmp(rs.getInt("emp_id"));
 		emp.setFirstName(rs.getString("FIRSTNAME"));
 		emp.setLastName(rs.getString("LASTNAME"));
 		emp.setUsername(rs.getString("USERNAME"));

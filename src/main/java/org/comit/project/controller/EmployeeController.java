@@ -1,14 +1,14 @@
 package org.comit.project.controller;
 
 
+import java.sql.Date;
+import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
 import org.comit.project.bean.Employee;
-import org.comit.project.bean.timesheet;
 import org.comit.project.service.EmployeeService;
 import org.comit.project.util.Util;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,7 +31,32 @@ public class EmployeeController {
 
 		return "index";
 	}
+	@GetMapping({"/employee"})
+	public String employee() {
+		System.out.println("Show Index Page");
 
+		return "employee";
+	}
+	@GetMapping({"/payroll"})
+	public String payroll() {
+		System.out.println("Show Index Page");
+
+		return "payroll";
+	}
+	@GetMapping({"/admin"})
+	public ModelAndView administrator() {
+		System.out.println("Show admin Page");
+		//List<Employee> em = this.empService.listEmployee();
+//		List<Employee> listemployee=new ArrayList <>();
+//		Employee emp1 = new Employee();
+//		emp1.setFirstName("lwam");
+//		emp1.setLastName("Yohanes");
+//		emp1.set
+//		listemployee.add(emp1);
+		
+
+		return new ModelAndView("administrator","emp",listEmployees());
+	}
 	@GetMapping("/list")
 	@ResponseBody
 	public List<Employee> listEmployees() {
@@ -41,6 +66,10 @@ public class EmployeeController {
 		List<Employee> listemployee=new ArrayList <>();
 		Employee emp1 = new Employee();
 		emp1.setFirstName("lwam");
+		emp1.setLastName("Yohanes");
+		emp1.setIdEmp(0);
+		emp1.setBirth(Date.valueOf(LocalDate.now()));
+		emp1.setPassword("123");
 		listemployee.add(emp1);
 		
 		//List<Employee> em = listemployee;
@@ -58,18 +87,19 @@ public class EmployeeController {
 	@PostMapping("/create")
 	public String createEmployee(HttpServletRequest request) {
 		System.out.println("Create Employee");
-
+		
+		String id = request.getParameter("id");
 		String first = request.getParameter("first");
 		String last = request.getParameter("last");
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 		String birth = request.getParameter("birth");
 
-        Employee emp = this.createEmployee(null,first, last, username, password, birth);
+        Employee emp = this.createEmployee(id, first, last, username, password, birth);
 
         this.empService.createEmployee(emp);
 
-		return "redirect:/list";
+		return "redirect:/create";
 	}
 	
 	@GetMapping("/update/{id}")
