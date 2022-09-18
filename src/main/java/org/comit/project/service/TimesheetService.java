@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 @Service
 public class TimesheetService {
+	double tax;
+	double salary;
 	@Autowired
 	TimesheetDao timesDao;
 
@@ -22,9 +24,7 @@ public class TimesheetService {
 	    		throw new RuntimeException("Invalid Employee Data " + times);*/
 		
 	}
-	public void payroll() {
-		
-	}
+	
 	}
 	
 

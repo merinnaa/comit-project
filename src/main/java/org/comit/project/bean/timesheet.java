@@ -15,6 +15,9 @@ Date   datefrom;
 	Date   dateto;
 	Date   datesubmitted;
 	int hours;
+	double tax;
+	double salary;
+	double sal;
 	public timesheet(int i, Date date, Date date2, Date date3, String string, String string2) {
 
 	}
@@ -58,6 +61,44 @@ Date   datefrom;
 			return false;
 		return true;
 	}
+
+public double gettax() {
+	if (salary > 10000)
+	{
+		tax = salary * 10/100;
+	}
+	else if (salary  > 5000)
+	{
+		tax = salary * 5/100;
+	}
+	else
+	{
+		tax = 0;
+	}
+	return tax;
+}
+public double getsalary() {
+	sal = salary - tax;
+	return sal;
+}
+public double getTax() {
+	return tax;
+}
+public void setTax(double tax) {
+	this.tax = tax;
+}
+public double getSalary() {
+	return salary;
+}
+public void setSalary(double salary) {
+	this.salary = salary;
+}
+public double getSal() {
+	return sal;
+}
+public void setSal(double sal) {
+	this.sal = sal;
+}
 }
 
 	/*@Override

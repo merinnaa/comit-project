@@ -46,23 +46,23 @@ public class EmployeeController {
 	@GetMapping({"/admin"})
 	public ModelAndView administrator() {
 		System.out.println("Show admin Page");
-		//List<Employee> em = this.empService.listEmployee();
-//		List<Employee> listemployee=new ArrayList <>();
-//		Employee emp1 = new Employee();
-//		emp1.setFirstName("lwam");
-//		emp1.setLastName("Yohanes");
-//		emp1.set
-//		listemployee.add(emp1);
+		List<Employee> em = this.empService.listEmployee();
+		/*
+		 * List<Employee> listemployee=new ArrayList <>(); Employee emp1 = new
+		 * Employee(); emp1.setFirstName("lwam"); emp1.setLastName("Yohanes");
+		 * emp1.setIdEmp(0); emp1.setBirth(Date.valueOf(LocalDate.now()));
+		 * emp1.setPassword("123"); listemployee.add(emp1);
+		 */
 		
 
-		return new ModelAndView("administrator","emp",listEmployees());
+		return new ModelAndView("administrator","emp",em);
 	}
 	@GetMapping("/list")
 	@ResponseBody
 	public List<Employee> listEmployees() {
 		System.out.println("List employee");
 
-		List<Employee> em = this.empService.listEmployee();
+		//List<Employee> em = this.empService.listEmployee();
 		List<Employee> listemployee=new ArrayList <>();
 		Employee emp1 = new Employee();
 		emp1.setFirstName("lwam");
@@ -74,7 +74,7 @@ public class EmployeeController {
 		
 		//List<Employee> em = listemployee;
 		//return new ModelAndView("list","Employee", em);
-		return em;
+		return listemployee;
 	}
 
 	@GetMapping("/create")
@@ -123,7 +123,7 @@ public class EmployeeController {
 		String password = request.getParameter("password");
 		String birth = request.getParameter("birth");
 
-		Employee emp = this.createEmployee(id,first, last, username, password, birth);
+		Employee emp = this.createEmployee(id, first, last, username, password, birth);
 
 		this.empService.modifyEmployee(emp);
 
