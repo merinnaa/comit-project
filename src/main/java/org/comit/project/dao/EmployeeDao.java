@@ -34,7 +34,7 @@ public class EmployeeDao {
 
 	public Employee findByUsername(String username) {
 
-		String sql = "SELECT * FROM Employee WHERE USER_NAME = ?";
+		String sql = "SELECT * FROM EMPLOYEE WHERE USER_NAME = ?";
 
 		List<Employee> em = jdbcTemplate.query(sql, new EmployeeMapper(), username);
 
@@ -43,34 +43,27 @@ public class EmployeeDao {
 
 	public void createEmployee(Employee emp) {
 
-        String sql = "INSERT Employee(EMP_ID,FIRST_NAME,LAST_NAME,USER_NAME,PASSWORD,BIRTH,STATUS) " +
+        String sql = "INSERT EMPLOYEE(EMP_ID,FIRST_NAME,LAST_NAME,USER_NAME,PASSWORD,BIRTH) " +
                      "VALUES(?,?,?,?,?,?)";
 
-        jdbcTemplate.update(sql,new Object[] {emp.getUsername(), emp.getPassword(), emp.getFirstName(),
+        jdbcTemplate.update(sql,new Object[] {emp.getIdEmp(), emp.getUsername(), emp.getPassword(), emp.getFirstName(),
         		                              emp.getLastName(), emp.getBirth(), emp.getStatus()});
 	}
 	
     public void modifyEmployee(Employee emp) {
 
-        String sql = "UPDATE Employee SET EMP_ID = ?, FIRST_NAME = ?, LAST_NAME = ?, USER_NAME = ?, BIRTH = ? " +
-                     "WHERE emp_id = ?";
+        String sql = "UPDATE EMPLOYEE SET EMP_ID = ?, FIRST_NAME = ?, LAST_NAME = ?, USER_NAME = ?, BIRTH = ? " +
+                     "WHERE EMP_ID = ?";
 
         jdbcTemplate.update(sql,new Object[] {emp.getIdEmp(), emp.getFirstName(), emp.getLastName(), emp.getUsername(), 
-                 emp.getBirth(), emp.getIdEmp()});
+                 emp.getBirth()});
     }
 
     public void deleteEmployee(int idEmp) {
 
-		String sql = "DELETE FROM Employee WHERE emp_id = ?";
+		String sql = "DELETE FROM EMPLOYEE WHERE EMP_ID = ?";
 
         jdbcTemplate.update(sql,new Object[] {idEmp});
     }
-
-	public void timesheetEmployee(timesheet emp) {
-		// TODO Auto-generated method stub
-		
-	}
-
-
 
 }

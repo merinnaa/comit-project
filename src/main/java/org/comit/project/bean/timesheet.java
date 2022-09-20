@@ -16,9 +16,9 @@ Date   datefrom;
 	Date   datesubmitted;
 	int hours;
 	double tax;
-	double salary;
+	double salary = 15*hours;
 	double sal;
-	public timesheet(int i, Date date, Date date2, Date date3, String string, String string2) {
+	public timesheet(int i, int j, int k, String string3, String string, String string2) {
 
 	}
 	public timesheet() {
@@ -99,11 +99,11 @@ public double getSal() {
 public void setSal(double sal) {
 	this.sal = sal;
 }
-}
 
-	/*@Override
+
+	@Override
 	public String toString() {
 		return "timesheet [idtimesheet=" + idtimesheet + ", datefrom=" + datefrom + ", dateto=" + dateto + ", datesubmitted="
 				+ datesubmitted + ", hours=" + hours + "]";
 	}
-}*/
+}

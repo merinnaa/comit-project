@@ -18,16 +18,24 @@ public class TimesheetDao {
 
 	public List<timesheet> listtimesheet(){
 
-		String sql = "SELECT * FROM Employee";
+		String sql = "SELECT * FROM TIMESHEET";
 
 		return jdbcTemplate.query(sql, new TimesheetMapper());
 	}
 	public void timesheetEmployee(timesheet times) {
 
-        String sql = "INSERT TIMESHEET(DATEFROM,DATETO,DATESUBMITTED,HOURS) " +
-                     "VALUES(?,?,?,?)";
+        String sql = "INSERT TIMESHEET(ID_TIMESHEET,DATEFROM,DATETO,DATESUBMITTED,HOURS) " +
+                     "VALUES(?,?,?,?,?)";
 
-        jdbcTemplate.update(sql,new Object[] {times.getDatefrom(), times.getDateto(), times.getDatesubmitted(),
+        jdbcTemplate.update(sql,new Object[] {times.getIdtimesheet(), times.getDatefrom(), times.getDateto(), times.getDatesubmitted(),
         		                              times.getHours()});
+	}
+	public timesheet findById(String idtimesheet) {
+
+		String sql = "SELECT * FROM TIMESHEET WHERE ID_TIMESHEET = ?";
+
+		List<timesheet> tim = jdbcTemplate.query(sql, new TimesheetMapper(), idtimesheet);
+
+		return tim.isEmpty()?null:tim.get(0);
 	}
 }

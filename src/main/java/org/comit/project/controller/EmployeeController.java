@@ -37,12 +37,6 @@ public class EmployeeController {
 
 		return "employee";
 	}
-	@GetMapping({"/payroll"})
-	public String payroll() {
-		System.out.println("Show Index Page");
-
-		return "payroll";
-	}
 	@GetMapping({"/admin"})
 	public ModelAndView administrator() {
 		System.out.println("Show admin Page");
@@ -57,25 +51,25 @@ public class EmployeeController {
 
 		return new ModelAndView("administrator","emp",em);
 	}
-	@GetMapping("/list")
-	@ResponseBody
-	public List<Employee> listEmployees() {
-		System.out.println("List employee");
-
-		//List<Employee> em = this.empService.listEmployee();
-		List<Employee> listemployee=new ArrayList <>();
-		Employee emp1 = new Employee();
-		emp1.setFirstName("lwam");
-		emp1.setLastName("Yohanes");
-		emp1.setIdEmp(0);
-		emp1.setBirth(Date.valueOf(LocalDate.now()));
-		emp1.setPassword("123");
-		listemployee.add(emp1);
-		
-		//List<Employee> em = listemployee;
-		//return new ModelAndView("list","Employee", em);
-		return listemployee;
-	}
+//	@GetMapping("/list")
+//	@ResponseBody
+//	public List<Employee> listEmployees() {
+//		System.out.println("List employee");
+//
+//		//List<Employee> em = this.empService.listEmployee();
+//		List<Employee> listemployee=new ArrayList <>();
+//		Employee emp1 = new Employee();
+//		emp1.setFirstName("lwam");
+//		emp1.setLastName("Yohanes");
+//		emp1.setIdEmp(0);
+//		emp1.setBirth(Date.valueOf(LocalDate.now()));
+//		emp1.setPassword("123");
+//		listemployee.add(emp1);
+//		
+//		//List<Employee> em = listemployee;
+//		//return new ModelAndView("list","Employee", em);
+//		return listemployee;
+//	}
 
 	@GetMapping("/create")
 	public String showCreate() {
@@ -88,18 +82,19 @@ public class EmployeeController {
 	public String createEmployee(HttpServletRequest request) {
 		System.out.println("Create Employee");
 		
-		String id = request.getParameter("id");
-		String first = request.getParameter("first");
-		String last = request.getParameter("last");
+		String id = request.getParameter("EMP_ID");
+		String first = request.getParameter("FIRST_NAME");
+		String last = request.getParameter("LAST_NAME");
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 		String birth = request.getParameter("birth");
+		String status = request.getParameter("status");
 
-        Employee emp = this.createEmployee(id, first, last, username, password, birth);
+        Employee emp = this.createEmployee(id, first, last, username, password, birth, status);
 
         this.empService.createEmployee(emp);
 
-		return "redirect:/create";
+		return "redirect:/admin";
 	}
 	
 	@GetMapping("/update/{id}")
@@ -122,12 +117,13 @@ public class EmployeeController {
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 		String birth = request.getParameter("birth");
+		String status = request.getParameter("status");
 
-		Employee emp = this.createEmployee(id, first, last, username, password, birth);
+		Employee emp = this.createEmployee(id, first, last, username, password, birth, status);
 
 		this.empService.modifyEmployee(emp);
 
-		return "redirect:/list";
+		return "redirect:/create";
 	}
 
 	@GetMapping("/delete/{id}")
@@ -136,12 +132,12 @@ public class EmployeeController {
 
 		this.empService.deleteEmployee(id);
 
-		return "redirect:/list";
+		return "redirect:/admin";
 	}
 
-	private Employee createEmployee(String id, String first, String last, String username, String password, String birth) {
+	private Employee createEmployee(String id, String first, String last, String username, String password, String birth, String status) {
 
-		Employee emp = new Employee(Util.parseId(id),first.trim(),last.trim(),username.trim(),password,Util.parseDate(birth),"");
+		Employee emp = new Employee(Util.parseId(id),first.trim(),last.trim(),username.trim(),password,Util.parseDate(birth), "");
 
 		return emp;
 	}

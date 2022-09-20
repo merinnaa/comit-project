@@ -27,9 +27,10 @@ body{
 					<li class="nav-item"><a class="nav-link" th:href="@{/index}">Home
 							<span class="sr-only">(current)</span>
 					</a></li>
-					<li class="nav-item"><a class="nav-link" th:href="@{/list}">List
-							Users</a></li>
-					<li class="nav-item active"><a class="nav-link" th:href="@{/create}">New User</a></li>
+					<li class="nav-item"><a class="nav-link" th:href="@{/employee}">Employee Profile
+							</a></li>
+					<li class="nav-item active"><a class="nav-link" th:href="@{/create}">Timesheet</a></li>
+					<li class="nav-item active"><a class="nav-link" th:href="@{/payroll}">Payroll</a></li>
 				</ul>
 				<ul class="navbar-nav ml-auto">
 					<li class="nav-item"><a class="nav-link" th:href="@{/logout}">Logout</a></li>
@@ -39,6 +40,10 @@ body{
 		<div class="jumbotron bg-white border border-warning mt-3 py-4">
 			<h1 class="display-5 mb-3">timesheet</h1>
 			<form th:action="@{/create}" method="post">
+			<div class="form-group">
+					<label>Employee Id</label>
+					<input type="text" class="form-control" name="birth" required>
+				</div>
 				<div class="form-group">
 					<label>Date From</label>
 					<input type="date" class="form-control" name="birth" required>
@@ -46,6 +51,10 @@ body{
 				<div class="form-group">
 					<label>Date to</label>
 					<input type="date" class="form-control" name="birth" required>
+					<div class="form-group">
+					<label>Date Submitted</label>
+					<input type="date" class="form-control" name="birth" required>
+				</div>
 				</div>
 				<div class="form-group">
 					<label>total hours</label>
