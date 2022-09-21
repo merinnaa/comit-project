@@ -1,9 +1,6 @@
 package org.comit.project.controller;
 
 
-import java.sql.Date;
-import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -16,7 +13,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -41,14 +37,6 @@ public class EmployeeController {
 	public ModelAndView administrator() {
 		System.out.println("Show admin Page");
 		List<Employee> em = this.empService.listEmployee();
-		/*
-		 * List<Employee> listemployee=new ArrayList <>(); Employee emp1 = new
-		 * Employee(); emp1.setFirstName("lwam"); emp1.setLastName("Yohanes");
-		 * emp1.setIdEmp(0); emp1.setBirth(Date.valueOf(LocalDate.now()));
-		 * emp1.setPassword("123"); listemployee.add(emp1);
-		 */
-		
-
 		return new ModelAndView("administrator","emp",em);
 	}
 //	@GetMapping("/list")
@@ -82,15 +70,15 @@ public class EmployeeController {
 	public String createEmployee(HttpServletRequest request) {
 		System.out.println("Create Employee");
 		
-		String id = request.getParameter("EMP_ID");
-		String first = request.getParameter("FIRST_NAME");
-		String last = request.getParameter("LAST_NAME");
+		//String id = request.getParameter("id");
+		String first = request.getParameter("first");
+		String last = request.getParameter("last");
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 		String birth = request.getParameter("birth");
-		String status = request.getParameter("status");
+		//String status = request.getParameter("status");
 
-        Employee emp = this.createEmployee(id, first, last, username, password, birth, status);
+        Employee emp = createEmployee(null, first, last, username, password, birth); //status);
 
         this.empService.createEmployee(emp);
 
@@ -104,7 +92,7 @@ public class EmployeeController {
 
 		Employee emp = this.empService.findEmployee(id);
 
-		return new ModelAndView("update","employee",emp);
+		return new ModelAndView("update","emp",emp);
 	}
 
 	@PostMapping("/update")
@@ -117,13 +105,13 @@ public class EmployeeController {
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 		String birth = request.getParameter("birth");
-		String status = request.getParameter("status");
+		//String status = request.getParameter("status");
 
-		Employee emp = this.createEmployee(id, first, last, username, password, birth, status);
+		Employee emp = this.createEmployee(id, first, last, username, password, birth);
 
 		this.empService.modifyEmployee(emp);
 
-		return "redirect:/create";
+		return "redirect:/admin";
 	}
 
 	@GetMapping("/delete/{id}")
@@ -135,7 +123,7 @@ public class EmployeeController {
 		return "redirect:/admin";
 	}
 
-	private Employee createEmployee(String id, String first, String last, String username, String password, String birth, String status) {
+	private Employee createEmployee(String id, String first, String last, String username, String password, String birth) {
 
 		Employee emp = new Employee(Util.parseId(id),first.trim(),last.trim(),username.trim(),password,Util.parseDate(birth), "");
 

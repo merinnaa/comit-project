@@ -2,7 +2,7 @@ package org.comit.project.dao;
 
 import java.util.List;
 
-import org.comit.project.bean.timesheet;
+import org.comit.project.bean.Timesheet;
 import org.comit.project.dao.mapper.TimesheetMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -10,31 +10,31 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public class TimesheetDao {
-	List<timesheet> tim;
+	List<Timesheet> tim;
 
 	@Autowired
 	JdbcTemplate jdbcTemplate;
 
 
-	public List<timesheet> listtimesheet(){
+	public List<Timesheet> listtimesheet(){
 
 		String sql = "SELECT * FROM TIMESHEET";
 
 		return jdbcTemplate.query(sql, new TimesheetMapper());
 	}
-	public void timesheetEmployee(timesheet times) {
+	public void timesheetEmployee(Timesheet times) {
 
-        String sql = "INSERT TIMESHEET(ID_TIMESHEET,DATEFROM,DATETO,DATESUBMITTED,HOURS) " +
-                     "VALUES(?,?,?,?,?)";
+        String sql = "INSERT TIMESHEET(ID_TIMESHEET,DATEFROM,DATETO,DATESUBMITTED,TIMESHEETcol,ADMIN_ID_ADMIN) " +
+                     "VALUES(?,?,?,?,?,?)";
 
         jdbcTemplate.update(sql,new Object[] {times.getIdtimesheet(), times.getDatefrom(), times.getDateto(), times.getDatesubmitted(),
-        		                              times.getHours()});
+        		                              times.getHours(), 1});
 	}
-	public timesheet findById(String idtimesheet) {
+	public Timesheet findById(String idtimesheet) {
 
 		String sql = "SELECT * FROM TIMESHEET WHERE ID_TIMESHEET = ?";
 
-		List<timesheet> tim = jdbcTemplate.query(sql, new TimesheetMapper(), idtimesheet);
+		List<Timesheet> tim = jdbcTemplate.query(sql, new TimesheetMapper(), idtimesheet);
 
 		return tim.isEmpty()?null:tim.get(0);
 	}

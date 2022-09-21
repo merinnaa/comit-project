@@ -3,22 +3,22 @@ package org.comit.project.dao.mapper;
 	import java.sql.ResultSet;
 	import java.sql.SQLException;
 
-	import org.comit.project.bean.timesheet;
+	import org.comit.project.bean.Timesheet;
 import org.springframework.jdbc.core.RowMapper;
 
-public class TimesheetMapper implements RowMapper<timesheet>{
+public class TimesheetMapper implements RowMapper<Timesheet>{
 	
 
 		@Override
-		public timesheet mapRow(ResultSet rs, int rowNum) throws SQLException {
+		public Timesheet mapRow(ResultSet rs, int rowNum) throws SQLException {
 
-			timesheet times = new timesheet();
+			Timesheet times = new Timesheet();
 
-			times.setIdtimesheet(rs.getInt("timesheetId"));
-			times.setDatefrom(rs.getDate("DATEFROM"));
-			times.setDateto(rs.getDate("DATETO"));
-			times.setDatesubmitted(rs.getDate("Datesubmitted"));
-			times.setHours(rs.getInt("HOURS"));
+			times.setIdtimesheet(rs.getInt("idtimesheet"));
+			times.setDatefrom(rs.getDate("datefrom"));
+			times.setDateto(rs.getDate("dateto"));
+			times.setDatesubmitted(rs.getDate("datesubmitted"));
+			times.setHours(rs.getInt("hours"));
 
 			return times;
 		}

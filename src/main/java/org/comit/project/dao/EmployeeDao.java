@@ -3,7 +3,6 @@ package org.comit.project.dao;
 import java.util.List;
 
 import org.comit.project.bean.Employee;
-import org.comit.project.bean.timesheet;
 import org.comit.project.dao.mapper.EmployeeMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -43,11 +42,11 @@ public class EmployeeDao {
 
 	public void createEmployee(Employee emp) {
 
-        String sql = "INSERT EMPLOYEE(EMP_ID,FIRST_NAME,LAST_NAME,USER_NAME,PASSWORD,BIRTH) " +
-                     "VALUES(?,?,?,?,?,?)";
+        String sql = "INSERT EMPLOYEE(EMP_ID,FIRST_NAME,LAST_NAME,USER_NAME,PASSWORD,BIRTH,STATUS,PAYMENT_ID_PAY,TIMESHEET_ID_TIMESHEET,ADMIN_ID_ADMIN) " +
+                     "VALUES(?,?,?,?,?,?,?,?,?,?)";
 
         jdbcTemplate.update(sql,new Object[] {emp.getIdEmp(), emp.getUsername(), emp.getPassword(), emp.getFirstName(),
-        		                              emp.getLastName(), emp.getBirth(), emp.getStatus()});
+        		                              emp.getLastName(), emp.getBirth(), emp.getStatus(),1,2,3});
 	}
 	
     public void modifyEmployee(Employee emp) {

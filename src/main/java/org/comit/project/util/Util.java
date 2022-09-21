@@ -1,8 +1,9 @@
 package org.comit.project.util;
 
+import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
+
 
 public class Util {
 
@@ -12,7 +13,7 @@ public class Util {
 
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 		try {
-			date = formatter.parse(str.trim());
+			date = new Date(formatter.parse(str.trim()).getTime());
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}

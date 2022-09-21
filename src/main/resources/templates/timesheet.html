@@ -29,7 +29,7 @@ body{
 					</a></li>
 					<li class="nav-item"><a class="nav-link" th:href="@{/employee}">Employee Profile
 							</a></li>
-					<li class="nav-item active"><a class="nav-link" th:href="@{/create}">Timesheet</a></li>
+					<li class="nav-item active"><a class="nav-link" th:href="@{/timesheet}">Timesheet</a></li>
 					<li class="nav-item active"><a class="nav-link" th:href="@{/payroll}">Payroll</a></li>
 				</ul>
 				<ul class="navbar-nav ml-auto">
@@ -39,26 +39,26 @@ body{
 		</nav>
 		<div class="jumbotron bg-white border border-warning mt-3 py-4">
 			<h1 class="display-5 mb-3">timesheet</h1>
-			<form th:action="@{/create}" method="post">
+			<form th:action="@{/timesheet}" method="post" th:object="${timesheet}">
 			<div class="form-group">
 					<label>Employee Id</label>
-					<input type="text" class="form-control" name="birth" required>
+					<input type="text" class="form-control" name="employeeId" required>
 				</div>
 				<div class="form-group">
 					<label>Date From</label>
-					<input type="date" class="form-control" name="birth" required>
+					<input type="date" class="form-control" name="dateFrom" required>
 				</div>
 				<div class="form-group">
 					<label>Date to</label>
-					<input type="date" class="form-control" name="birth" required>
+					<input type="date" class="form-control" name="dateTo" required>
 					<div class="form-group">
 					<label>Date Submitted</label>
-					<input type="date" class="form-control" name="birth" required>
+					<input type="date" class="form-control" name="dateSubmitted" required>
 				</div>
 				</div>
 				<div class="form-group">
 					<label>total hours</label>
-					<input type="text" class="form-control" name="username" placeholder="Type in Username" required>
+					<input type="text" class="form-control" name="hours" placeholder="enter hours" required>
 				</div>
 				
 				<button type="submit" class="btn btn-primary mt-2" style="min-width: 100px">Save</button>

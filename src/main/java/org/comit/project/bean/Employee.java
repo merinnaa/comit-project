@@ -3,15 +3,22 @@ package org.comit.project.bean;
 
 import java.util.Date;
 
-public class Employee {
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
-	int idEmp;
-	String firstName;
-	String lastName;
-	String username;
-	String password;
-	Date   birth;
-	String status;
+public class Employee {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+
+	private int idEmp;
+	private String firstName;
+	private String lastName;
+	private String username;
+	private String password;
+	private Date   birth;
+	private String status;
 	
 
 	public Employee() {
@@ -74,7 +81,7 @@ public class Employee {
 
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj)
+	if (this == obj)
 			return true;
 		if (obj == null)
 			return false;
@@ -91,4 +98,5 @@ public class Employee {
 		return "Emp [idEmp=" + idEmp + ", firstName=" + firstName + ", lastName=" + lastName + ", username="
 				+ username + ", password=" + password + ", birth=" + birth + ", status=" + status + "]";
 	}
+	
 }

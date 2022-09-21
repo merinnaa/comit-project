@@ -17,9 +17,9 @@ public class EmployeeService {
 
 		List<Employee> em = empDao.listEmployee();
 
-		em.forEach(System.out::println);
+		//em.forEach(System.out::println);
 
-		em.removeIf(emp-> !"A".equals(emp.getStatus()));
+		//em.removeIf(emp-> !"A".equals(emp.getStatus()));
 
 		return em;
 	}
@@ -47,7 +47,7 @@ public class EmployeeService {
     	empDao.deleteEmployee(idEmp);
     }
 
-    public void validateEmployee(Employee emp) {
+    private void validateEmployee(Employee emp) {
 
     	if (emp.getFirstName().isEmpty() ||
     		emp.getLastName().isEmpty() ||
